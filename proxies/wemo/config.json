@@ -1,0 +1,22 @@
+{
+  "public": {
+    "displayName": "Belkin Wemo",
+    "description": "Manage Wemo Switch, Wemo Insight, and the other Wemo Devices",
+    "akcDtNames": [
+      "Belkin WeMo Switch Proxy",
+      "Belkin WeMo Insight Switch Proxy"
+    ]
+  },
+  "akcDtid": {
+    "bridge": "dt42",
+    "switch": "dtf1635fc2d0ee4889adb336e748a6c777",
+    "motion": "dt42",
+    "maker": "dt42",
+    "insight": "dtfd0ddd61f92e4a5c80c214a93dcba4cf",
+    "lightSwitch": "dt42"
+  },
+  "scheduleUpdate": true,
+  "scheduleUpdatePeriodMs": 30000,
+  "binaryStateScheduleUpdatePeriodMs": 5000,
+  "insightParamsScheduleUpdatePeriodMs": 900000
+}

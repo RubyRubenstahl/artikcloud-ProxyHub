@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "state",
+      "type": "CUSTOM",
+      "valueClass": "String",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": ""
+    }
+  ],
+  "actions": [
+    {
+      "name": "lock",
+      "description": "Set state to On",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "unlock",
+      "description": "Set state to Off",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "getState",
+      "description": "get binary state",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

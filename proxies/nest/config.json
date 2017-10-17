@@ -1,0 +1,25 @@
+{
+  "public": {
+    "displayName": "nest",
+    "description": "nest",
+    "userParameters": [
+      {
+        "name": "username",
+        "value": "samiioparis@gmail.com",
+        "type": "string",
+        "description": "NEST account login e-mail"
+      },
+      {
+        "name": "password",
+        "value": "L!sten2Me",
+        "type": "password",
+        "description": "NEST account password"
+      }
+    ],
+    "userParametersPerDevice": {},
+    "akcDtNames": [
+      "Nest Thermostat Proxy"
+    ]
+  },
+  "scheduleUpdatePeriodMs": 60000
+}

@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "state",
+      "type": "CUSTOM",
+      "valueClass": "Boolean",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": ""
+    }
+  ],
+  "actions": [
+    {
+      "name": "setOn",
+      "description": "Set state to On",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "setOff",
+      "description": "Set state to Off",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "getState",
+      "description": "get binary state",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

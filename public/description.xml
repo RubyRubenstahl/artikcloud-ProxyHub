@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns="urn:artik-cloud:device-1-0">
+  <URLBase>105.128.238.51:8888</URLBase>
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:artikcloud:device:proxyhub:1</deviceType>
+    <friendlyName>ARTIK Cloud Proxy Hub</friendlyName>
+    <manufacturer>Samsung ARTIK Cloud</manufacturer>
+    <manufacturerURL>http://artik.cloud</manufacturerURL>
+    <modelDescription>artik-cloud proxy-hub</modelDescription>
+    <modelName>ProxyHub</modelName>
+    <modelNumber>1.0</modelNumber>
+    <modelURL>http://artik.cloud/</modelURL>
+    <serialNumber>32b12b00-dcb3-4b17-90ff-cc99b62ff6a5</serialNumber>
+    <UDN>uuid:32b12b00-dcb3-4b17-90ff-cc99b62ff6a5</UDN>
+    <UPC>32b12b00-dcb3-4b17-90ff-cc99b62ff6a5</UPC>
+    <serviceList>
+      <service>
+        <serviceType>urn:artikcloud:service:onboardedDevicesList:1</serviceType>
+        <serviceId>urn:artikcloud:serviceId:getlinked</serviceId>
+        <controlURL>/proxydevices/linked</controlURL>
+      </service>
+      <service>
+        <serviceType>urn:artikcloud:service:notOnboardedDevicesList:1</serviceType>
+        <serviceId>urn:artikcloud:serviceId:getnotlinked</serviceId>
+        <controlURL>/proxydevices/notlinked</controlURL>
+      </service>
+      <service>
+        <serviceType>urn:artikcloud:service:onboardDevice:1</serviceType>
+        <serviceId>urn:artikcloud:serviceId:post2linkdevice</serviceId>
+        <controlURL>/proxydevices/:proxyDeviceId</controlURL>
+      </service>
+      <service>
+        <serviceType>urn:artikcloud:service:artikcloudCandidateDevicesList:1</serviceType>
+        <serviceId>urn:artikcloud:serviceId:getcandidates</serviceId>
+        <controlURL>/proxydevices/:proxyDeviceId/candidates</controlURL>
+      </service>
+    </serviceList>
+  </device>
+</root>

@@ -1,0 +1,29 @@
+{
+  "fields": [
+    {
+      "name": "sensorTypeString",
+      "type": "CUSTOM",
+      "valueClass": "String",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": ""
+    },
+    {
+      "name": "level",
+      "type": "CUSTOM",
+      "valueClass": "Boolean",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": ""
+    }
+  ],
+  "actions": [
+    {
+      "name": "getState",
+      "description": "get binary state",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

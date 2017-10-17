@@ -1,0 +1,143 @@
+{
+  "fields": [
+    {
+      "name": "state",
+      "type": "String",
+      "unit": "",
+      "isCollection": false,
+      "description": "on or off",
+      "metadata": {},
+      "tags": null
+    },
+    {
+      "name": "lastChangeTimestamp",
+      "type": "CUSTOM",
+      "valueClass": "Long",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "lastOnTime",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "todayOnTime",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "accumulatedOnTime",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "timeWindowSpan",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "averagePower",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    },
+    {
+      "name": "instantPower",
+      "type": "CUSTOM",
+      "valueClass": "Double",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    },
+    {
+      "name": "todayConsumedEnergy",
+      "type": "CUSTOM",
+      "valueClass": "Double",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    },
+    {
+      "name": "accumulatedConsumedEnergy",
+      "type": "CUSTOM",
+      "valueClass": "Double",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    },
+    {
+      "name": "powerThreshold",
+      "type": "CUSTOM",
+      "valueClass": "Double",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    }
+  ],
+  "actions": [
+    {
+      "name": "setOn",
+      "description": "Set state to On",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "setOff",
+      "description": "Set state to Off",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "toggle",
+      "description": "Toggle state",
+      "parameters": [],
+      "isStandard": false,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "setState",
+      "description": "Set state to value",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "CUSTOM",
+          "valueClass": "Boolean",
+          "unit": null
+        }
+      ],
+      "isStandard": false,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "getState",
+      "description": "get binary state",
+      "isStandard": false,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "getInsightParams",
+      "description": "getInsightParams",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

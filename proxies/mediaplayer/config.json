@@ -1,0 +1,20 @@
+{
+  "public": {
+    "displayName": "Media Player",
+    "description": "Play media file from ARTIK Cloud",
+    "userParametersPerDevice": {
+      "mediaplayer": {
+        "displayName": "Media player command",
+        "value": "mplayer",
+        "description": "Shell command used to play media."
+      }
+    },
+    "akcDtNames": [
+      "Media Player Proxy"
+    ]
+  },
+  "scheduleUpdatePeriodMs": 5000,
+  "akcDtid": {
+    "mediaPlayer": "dt7e7b76ae3d094678b8287da8fcff7c77"
+  }
+}

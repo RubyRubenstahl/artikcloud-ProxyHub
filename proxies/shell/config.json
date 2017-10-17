@@ -1,0 +1,22 @@
+{
+  "public": {
+    "displayName": "Shell Proxy",
+    "description": "Manage Shell Proxy",
+    "defaultName": "Shell Proxy Device",
+    "userParametersPerDevice": {
+      "setOn": {
+        "value": "echo on > action",
+        "description": "Command executed when setOn is called"
+      },
+      "setOff": "echo off > action",
+      "state": "retval=$(cat action 2> /dev/null); if [ $? -eq 0 ]; then echo $retval; else echo off; fi;"
+    },
+    "akcDtNames": [
+      "Shell proxy"
+    ]
+  },
+  "scheduleUpdatePeriodMs": 5000,
+  "akcDtid": {
+    "shellProxy": "dtcf3ef7e6431d4bc4849ad2f82d205ed7"
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "public": {
+        "displayName": "TTS player",
+        "description": "Text-to-speech player",
+        "akcDtNames": [
+          "TTSPlayer"
+        ]
+    },
+    "akcDtid": {
+      "ttsPlayer": "dtcd50e5ad789c403e87d8c44cf8209b4d"
+    },
+    "scheduleUpdatePeriodMs": 30000
+}

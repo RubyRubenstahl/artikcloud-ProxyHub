@@ -1,0 +1,57 @@
+{
+  "fields": [
+    {
+      "name": "state",
+      "type": "String",
+      "unit": "",
+      "isCollection": false,
+      "description": "on or off",
+      "metadata": {},
+      "tags": null
+    }
+  ],
+  "actions": [
+    {
+      "name": "setOn",
+      "description": "Set state to On",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "setOff",
+      "description": "Set state to Off",
+      "parameters": [],
+      "isStandard": true,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "toggle",
+      "description": "Toggle state",
+      "parameters": [],
+      "isStandard": false,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "setState",
+      "description": "Set state to value",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "CUSTOM",
+          "valueClass": "Boolean",
+          "unit": null
+        }
+      ],
+      "isStandard": false,
+      "type": "CUSTOM"
+    },
+    {
+      "name": "getState",
+      "description": "get binary state",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

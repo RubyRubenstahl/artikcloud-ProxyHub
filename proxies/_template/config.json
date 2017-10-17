@@ -1,0 +1,22 @@
+{
+  "public": {
+    "displayName": "template",
+    "description": "template",
+    "userParameters": [
+      {
+        "name": "name of the parameter",
+        "value": "default value",
+        "type": "string or password or hidden or any other HTML input type",
+        "description": "description of the parameter"
+      }
+    ],
+    "userParametersPerDevice": {
+      "param1": "42",
+      "param2": "43"
+    }
+  },
+  "scheduleUpdatePeriodMs": 30000,
+  "akcDtNames": [
+    "ARTIK Cloud device type name"
+  ]
+}

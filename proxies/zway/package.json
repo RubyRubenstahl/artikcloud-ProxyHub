@@ -1,0 +1,14 @@
+{
+  "name": "artik-zway",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "deep-equal": "^1.0.1",
+    "promise": "^7.1.1",
+    "superagent": "^2.1.0"
+  },
+  "devDependencies": {
+    "supertest": "^1.2.0",
+    "tape": "^4.6.0"
+  }
+}

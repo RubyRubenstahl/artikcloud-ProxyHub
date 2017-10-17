@@ -1,0 +1,16 @@
+{
+  "public": {
+    "displayName": "Philips Hue",
+    "description": "Philips Hue proxy",
+    "userParameters": [],
+    "userParametersPerDevice": {},
+    "akcDtNames": [
+      "Philips Hue Light Proxy"
+    ]
+  },
+  "scheduleUpdatePeriodMs": 30000,
+  "log": {
+    "level": "debug"
+  },
+  "username": ""
+}

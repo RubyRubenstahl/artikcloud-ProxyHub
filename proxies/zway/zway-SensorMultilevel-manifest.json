@@ -1,0 +1,45 @@
+{
+  "fields": [
+    {
+      "name": "scale",
+      "type": "CUSTOM",
+      "valueClass": "Integer",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "scaleString",
+      "type": "CUSTOM",
+      "valueClass": "String",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "s"
+    },
+    {
+      "name": "sensorTypeString",
+      "type": "CUSTOM",
+      "valueClass": "String",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    },
+    {
+      "name": "val",
+      "type": "CUSTOM",
+      "valueClass": "Double",
+      "isCollection": false,
+      "tags": [],
+      "unitSymbol": "W"
+    }
+  ],
+  "actions": [
+    {
+      "name": "getState",
+      "description": "get all states",
+      "isStandard": false,
+      "type": "CUSTOM"
+    }
+  ],
+  "messageFormat": "json"
+}

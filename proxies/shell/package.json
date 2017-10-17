@@ -1,0 +1,12 @@
+{
+  "name": "artik-shell",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "supertest": "^1.2.0",
+    "tape": "^4.6.0"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "public": {
+    "displayName": "Zwave Zway Proxy",
+    "description": "Manage Zwave Devices",
+    "userParameters": [
+      {
+        "name": "zwayServerHostname",
+        "value": "192.168.1.50",
+        "type": "string",
+        "description": "zway Server Hostname"
+      },
+      {
+        "name": "zwayServerPort",
+        "value": "8083",
+        "type": "string",
+        "description": "zway Server Port"
+      }
+    ]
+  },
+  "akcDtid": {
+    "SwitchBinary": "dt42",
+    "SwitchMultilevel": "dt42",
+    "SensorBinary": "dt42",
+    "SensorMultilevel": "dt42",
+    "Meter": "dt42",
+    "Thermostat": "dt42",
+    "DoorLock": "dt660c9d6c3f3543918600b39476249d24"
+  },
+  "scheduleUpdate": true,
+  "scheduleUpdatePeriodMs": 30000,
+  "akcDtNames": [
+    "ZWave Lock"
+  ]
+}
