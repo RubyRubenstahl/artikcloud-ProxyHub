@@ -27,8 +27,6 @@ You can use the Proxy Hub repo in the three ways:
     npm install
     ~~~
 
-Note it might take up to 1h on a slow computer to finish installation.
-
 ## Demo
 
  1. On a machine with a fixed IP address, run the command to start the server:
@@ -49,10 +47,10 @@ Note it might take up to 1h on a slow computer to finish installation.
  
   There are two types of devices: discoverable (by the hub) and non-discoverable. The workflows of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby device and give you the opportunity to add it to ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must add it manually.
  
- 4. We will use TTS Player for the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
+ 4. We will use the TTS Player for the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
  
- 5. Go to My ARTIK Cloud. You should see a TTS player has been added to your account.
+ 5. Go to [My ARTIK Cloud](https://my.artik.cloud). You should see a TTS player has been added to your account.
  
  6. Click that device at My ARTIK Cloud to send an action. e.g. Play "How are you!".
   ![Add Devices](./img/screen5_sendAction.png)
@@ -65,7 +63,7 @@ Note it might take up to 1h on a slow computer to finish installation.
  
 ## Add a new proxy
 
-You can add a new proxy into ARITK Cloud Proxy Hub. Then using the hub, you will be able to add physical devices corresponding to that proxies to the ARTIK Cloud and phsical devices can communicate to ARTIK Cloud via the proxy on the hub.
+You can add a new proxy into ARITK Cloud Proxy Hub. Then using the hub, you will be able to add physical devices corresponding to the proxies to  ARTIK Cloud and physical devices can communicate to ARTIK Cloud via the proxy on the hub.
 
 To create a new proxy , add its folder to the `/proxies` folder. Proxies with a folder starting with '_' are not loaded. _template folder contains an example of what you need to do to create a proxy.
 
