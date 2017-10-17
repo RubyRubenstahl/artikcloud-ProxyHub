@@ -4,9 +4,9 @@ ARTIK Cloud Proxy Hub application is a hub that can link to ARTIK Cloud multiple
 
 You can use Proxy Hub code in three ways:
 
-1. Use the proxy hub out of box. Follow the Demo section to add and play with devices existing in your local area. Directory '/proxies' lists the supported devices such as Philips Hue, Wemo, Zway et al.
-2. Extend this proxy hub code by adding a new proxy. A new proxy can talk to new devices.
-3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer. 
+1. Use the proxy hub out of box. Follow the [Demo](#demo) section to add and play with devices existing in your local area. Directory '/proxies' lists the supported devices such as Philips Hue, Wemo, Zway et al.
+2. Extend this proxy hub by adding a new proxy. A new proxy can talk to new devices.
+3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer in order to use the hub.
 
 ## Requirements
 
@@ -15,26 +15,33 @@ You can use Proxy Hub code in three ways:
 
 ## Setup / Installation
 
- - your proxy hub we recommend you to use a fix IP
- - Unzip the ARTIKCloudProxyHub.zip
- - Go to the ARTIKCloudProxyHub folder
- - Run "npm install" (can take up to 1h on a slow computer)
+ 1. Clone this repository if you haven't already done so.
 
-# Demo
+ 2. At the root directory and run the command:
+    ~~~shell
+    npm install
+    ~~~
 
- 1. Run "npm start". After the server is started you will be able to read this line:
+Note it might take up to 1h on a slow computer to finish installation.
+
+## Demo
+
+ 1. On a machine with the fix IP address, Run "npm start". 
+ 2. After the server is started, you will see this line:
 "GO TO THIS WEBPAGE TO ACCESS THE UI: <url>"
- 2. Open a browser and go to the url.
- 3. The ui will guide you to set up you proxy hub. @TODO highlevel what will be setup in app level
+ 2. Open a browser and load the above url.
+ 3. The UI will guide you to set up you proxy hub. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application info to configure the hub. 
+ 4. Now you can play with the hub with two different type of devices.
+ 5. @TODO discoverable devices
+ 6. @TODO non discoverable devices
+ 
 
-@TODO: different workflow for device discoverable and no discoverable....
 
 
-
-# Restart the server
+## Restart the server
 - If you stop the server you can restart it using "npm start"
 
-# Add a new proxy to ARTIK Cloud Proxy Hub
+## Add a new proxy to ARTIK Cloud Proxy Hub
 To add a new proxy add his folder to the `/proxies` folder.
 Proxies with a folder starting with '_' are not loaded.
 _template folder contains an example of what you need to do to create a proxy
