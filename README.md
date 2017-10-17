@@ -1,12 +1,17 @@
 # ARTIK Cloud Proxy Hub
 
-ARTIK Cloud Proxy Hub application is a hub that can link to ARTIK Cloud multiple devices present in your area.
+ARTIK Cloud Proxy Hub application is a hub, which  
+ - discovers your local physical devices
+ - creates virtual devices on ARTIK Cloud for them or link them to your exising virtual devices
+ - proxies messages/Actions between ARTIK Cloud and physical devices via proxies on the hub.
 
-You can use Proxy Hub code in three ways:
+You can use Proxy Hub repo in the three ways:
 
-1. Use the proxy hub out of box. Follow the [Demo](#demo) section to add and play with devices existing in your local area. Directory `/proxies` lists the supported devices such as Philips Hue, Wemo, Zway et al.
+1. Use the Proxy Hub out of box. After [setting up](#setup--installation), follow the [Demo](#demo) section to add and play with devices existing in your local area. Directory `/proxies` lists the supported devices such as Philips Hue, Wemo, Zway et al. 
 2. Extend this proxy hub by adding a [new proxy](#add-a-new-proxy). Then the hub can talk to more types of devices (not limited to the ones under `/proxies`).
 3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer in order to use the hub.
+
+We will add new proxies to this repo. Please check back from time to time.
 
 ## Requirements
 @WAITFORENG
@@ -42,7 +47,7 @@ Note it might take up to 1h on a slow computer to finish installation.
  
  ![Add Devices](./img/screen2.png)
  
- There are two types of devices: discoverable by hub and nondiscoverable. The workflow of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable, you must added it manually. For example, "Shell Proxy" and "TTS Player" are not discoverable. 
+ There are two types of devices: discoverable by hub and nondiscoverable. The workflow of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must added it manually.
  
  4. Lets play with TTS Player in the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
