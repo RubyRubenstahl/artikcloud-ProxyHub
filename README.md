@@ -14,15 +14,15 @@ You can use the Proxy Hub repo in the three ways:
 **We will add new proxies to this repo. Please check back from time to time.**
 
 ## Requirements
-@WAITFORENG
-- [node](https://nodejs.org/en/download/)  (Version >= 6.5.0????) 
-- [npm](https://www.npmjs.com/get-npm) (Version >= 3.10.0????)
+
+- [node](https://nodejs.org/en/download/)  (Version >= 6.5.0) 
+- [npm](https://www.npmjs.com/get-npm) (Version >= 3.10.0)
 
 ## Setup / Installation
 
  1. Clone this repository.
 
- 2. At the root directory and run the command:
+ 2. Navigate to the root directory and run the command:
     ~~~shell
     npm install
     ~~~
