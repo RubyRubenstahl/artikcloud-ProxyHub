@@ -41,18 +41,18 @@ Note it might take up to 1h on a slow computer to finish installation.
  
  2. Open a browser and load the above url.
  
- 3. You will be prompted to log in to ARTIK Cloud. After you log in, the UI guides you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application info to configure the hub. 
+ 3. You will be prompted to log in to ARTIK Cloud. After you log in, the UI will guide you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application information to configure the hub. 
  
  4. Now you can play with the hub. Click "Add Another Device". Then you are prompted to select which type of devices to add. 
  
  ![Add Devices](./img/screen2.png)
  
-  There are two types of devices: discoverable (by the hub) and non-discoverable. The workflows of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must add it manually.
+  There are two types of devices: discoverable (by the hub) and non-discoverable. The workflows of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby device and give you the opportunity to add it to ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must add it manually.
  
- 4. Lets play with TTS Player in the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
+ 4. We will use TTS Player for the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
  
- 5. Go to My ARTIK Cloud. You should see an TTS player has been added to your account.
+ 5. Go to My ARTIK Cloud. You should see a TTS player has been added to your account.
  
  6. Click that device at My ARTIK Cloud to send an action. e.g. Play "How are you!".
   ![Add Devices](./img/screen5_sendAction.png)
@@ -69,7 +69,7 @@ You can add a new proxy into ARITK Cloud Proxy Hub. Then using the hub, you will
 
 To create a new proxy , add its folder to the `/proxies` folder. Proxies with a folder starting with '_' are not loaded. _template folder contains an example of what you need to do to create a proxy.
 
-Consult the instruction under `/proxies` to learn more.
+Consult the instruction under the `/proxies` folder to learn more.
 
 ## More about ARTIK Cloud
 
