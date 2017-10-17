@@ -382,7 +382,7 @@ Zway.prototype.getStatus = function () {
   if (errors.length > 0) {
     return {
       'level': 'WARNING',
-      'message': errors.join("\n"),
+      'message': errors[errors.length-1],
       'code': 500
     }
   }

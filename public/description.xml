@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root xmlns="urn:artik-cloud:device-1-0">
-  <URLBase>105.128.238.51:8888</URLBase>
+  <URLBase>192.168.1.200:8888</URLBase>
   <specVersion>
     <major>1</major>
     <minor>0</minor>

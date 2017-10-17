@@ -5,13 +5,13 @@
     "userParameters": [
       {
         "name": "username",
-        "value": "samiioparis@gmail.com",
+        "value": "<username>",
         "type": "string",
         "description": "NEST account login e-mail"
       },
       {
         "name": "password",
-        "value": "L!sten2Me",
+        "value": "<password>",
         "type": "password",
         "description": "NEST account password"
       }

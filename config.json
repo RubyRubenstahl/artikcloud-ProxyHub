@@ -4,7 +4,7 @@
     "filename": "log/proxyhub.log"
   },
   "dir": {
-    "root": "/Users/yujing.w/Desktop/work/temp/artik-proxy-hub-v1.3.0-beta-2",
+    "root": "/Users/wilfred/dev/sami/salamis/tools/artik-proxy-hub",
     "proxies": "./proxies",
     "data": "./data",
     "publicDir": "public"
@@ -26,12 +26,12 @@
     "maxDefferedMessagePerDevice": 150
   },
   "optionalArtikOnBoarding": {
-    "clientId": "1bb49f033a864b7e9b49763047912697",
-    "clientSecret": "daccb18582294c1ba937d43740665f33",
+    "clientId": "",
+    "clientSecret": "",
     "authUrl": "https://accounts.artik.cloud",
-    "callbackUrl": "http://105.128.238.51:8888/auth/artikcloud/callback",
+    "callbackUrl": "",
     "authPath": "/auth",
-    "userId": "77edbc617b3248c484abbff7d9ce6350",
+    "userId": "",
     "multipleAccounts": false
   }
 }

@@ -5,7 +5,7 @@
     "userParameters": [
       {
         "name": "zwayServerHostname",
-        "value": "192.168.1.50",
+        "value": "<Z-Way Server IP>",
         "type": "string",
         "description": "zway Server Hostname"
       },

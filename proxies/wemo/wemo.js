@@ -494,7 +494,7 @@ Wemo.prototype.getStatus = function () {
   {
     return {
       'level': 'WARNING',
-      'message': errors.join("\n"),
+      'message': errors[errors.length-1],
       'code': 500
     }
   }

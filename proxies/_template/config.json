@@ -8,15 +8,24 @@
         "value": "default value",
         "type": "string or password or hidden or any other HTML input type",
         "description": "description of the parameter"
+      },
+      {
+        "name": "defaultLevel",
+        "value": "75",
+        "type": "string",
+        "description": "default level"
       }
     ],
     "userParametersPerDevice": {
-      "param1": "42",
-      "param2": "43"
+      "preferedLevel": "42"
     }
   },
   "scheduleUpdatePeriodMs": 30000,
   "akcDtNames": [
     "ARTIK Cloud device type name"
-  ]
+  ],
+  "log": {
+    "level": "debug",
+    "filename": "log/proxyhub.log"
+  }
 }
