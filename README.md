@@ -4,13 +4,13 @@ ARTIK Cloud Proxy Hub application is a hub that can link to ARTIK Cloud multiple
 
 You can use Proxy Hub code in three ways:
 
-1. Use the proxy hub out of box. Follow the [Demo](#demo) section to add and play with devices existing in your local area. Directory '/proxies' lists the supported devices such as Philips Hue, Wemo, Zway et al.
-2. Extend this proxy hub by adding a new proxy. A new proxy can talk to new devices.
+1. Use the proxy hub out of box. Follow the [Demo](#demo) section to add and play with devices existing in your local area. Directory `/proxies` lists the supported devices such as Philips Hue, Wemo, Zway et al.
+2. Extend this proxy hub by adding a [new proxy](#add-a-new-proxy). Then the hub can talk to more types of devices (not limited to the ones under `/proxies`).
 3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer in order to use the hub.
 
 ## Requirements
-
-- [node](https://nodejs.org/en/download/)  (Version >= 6.5.0????) <<@TODO
+@WAITFORENG
+- [node](https://nodejs.org/en/download/)  (Version >= 6.5.0????) 
 - [npm](https://www.npmjs.com/get-npm) (Version >= 3.10.0????)
 
 ## Setup / Installation
@@ -26,12 +26,15 @@ Note it might take up to 1h on a slow computer to finish installation.
 
 ## Demo
 
- 1. On a machine with the fix IP address, Run "npm start". 
- 2. After the server is started, you will see this line:
+ 1. On a machine with a fixed IP address, run the command to start the server:
+    ~~~shell
+    npm start
+    ~~~
+ 2. On the terminal, you will see this line:
 "GO TO THIS WEBPAGE TO ACCESS THE UI: <url>"
  2. Open a browser and load the above url.
- 3. The UI will guide you to set up you proxy hub. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application info to configure the hub. 
- 4. Now you can play with the hub. Click "Add Another Device". Then you are prompt to select which type of devices to add. Depending on devices, there are two workflows of adding them. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and notify you if any of such device is found. If found, you can add; Otherwise you cannot. If a device is not discoverable, you must added it manually. For example, "Shell Proxy" and "TTS Player" are not discoverable.
+ 3. You will be prompted to log in to ARTIK Cloud. After theat, the UI guides you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application info to configure the hub. 
+ 4. Now you can play with the hub. Click "Add Another Device". Then you are prompt to select which type of devices to add. Depending on devices, there are two workflows of adding them. If a device (e.g. Philips Hue @WAITFORENG) is discoverable, the hub will search your nearby and notify you if any of such device is found. If found, you can add; Otherwise you cannot. If a device is not discoverable, you must added it manually. For example, "Shell Proxy" and "TTS Player" are not discoverable. 
  ![Add Devices](./img/screen2.png)
  4. Lets play with TTS Player in the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
@@ -39,16 +42,15 @@ Note it might take up to 1h on a slow computer to finish installation.
  6. Click that device at My ARTIK Cloud to send an action. e.g. Play "How are you!".
   ![Add Devices](./img/screen5_sendAction.png)
  7. You should hear "How are you" from your computer running hub.
- 8. Once you have added a proxy to your devices, you can log off the hub in the browswer. However, keep the proxy hub running. The devices will continue communicate with ARTIK Cloud even if you have logged out. 
+ 8. Once you have added a proxy to your devices, you can log off the hub in the browswer. However, keep the server running. The devices will continue communicate with ARTIK Cloud even if you have logged out. 
  
-## Restart the server
-@TODO- If you stop the server you can restart it using "npm start"
+## Add a new proxy
 
-## Add a new proxy to ARTIK Cloud Proxy Hub
-@TODO
-To add a new proxy add his folder to the `/proxies` folder.
-Proxies with a folder starting with '_' are not loaded.
-_template folder contains an example of what you need to do to create a proxy
+You can add a new proxy into ARITK Cloud Proxy Hub. Then using the hub, you will be able to add physical devices corresponding to that proxies to the ARTIK Cloud and phsical devices can communicate to ARTIK Cloud via the proxy on the hub.
+
+To create a new proxy , add its folder to the `/proxies` folder. Proxies with a folder starting with '_' are not loaded. _template folder contains an example of what you need to do to create a proxy.
+
+Consult the instruction under `/proxies` to learn more.
 
 ## More about ARTIK Cloud
 
