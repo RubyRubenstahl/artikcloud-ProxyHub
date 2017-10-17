@@ -2,9 +2,11 @@
 
 ARTIK Cloud Proxy Hub application is a hub that can link to ARTIK Cloud multiple devices present in your area.
 
-@TODO Use Proxy Hub code in three ways (aka why do you need Proxy Hub) ===
+You can use Proxy Hub code in three ways:
 
-ARTIK Cloud Proxy Hub is already compatible with multiple devices (Wemo, Shell command...) but you can extend it adding some new proxies that are able to talk to new devices.
+1. Use the proxy hub out of box. Follow the Demo section to add and play with devices existing in your local area. Directory '/proxies' lists the supported devices such as Philips Hue, Wemo, Zway et al.
+2. Extend this proxy hub code by adding a new proxy. A new proxy can talk to new devices.
+3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer. 
 
 ## Requirements
 
@@ -13,8 +15,7 @@ ARTIK Cloud Proxy Hub is already compatible with multiple devices (Wemo, Shell c
 
 ## Setup / Installation
 
- - In order to setup your Proxy hub we recommend you to use a fix IP
- - Required NodeJS: node and npm, https://nodejs.org/en/
+ - your proxy hub we recommend you to use a fix IP
  - Unzip the ARTIKCloudProxyHub.zip
  - Go to the ARTIKCloudProxyHub folder
  - Run "npm install" (can take up to 1h on a slow computer)
@@ -27,6 +28,7 @@ ARTIK Cloud Proxy Hub is already compatible with multiple devices (Wemo, Shell c
  3. The ui will guide you to set up you proxy hub. @TODO highlevel what will be setup in app level
 
 @TODO: different workflow for device discoverable and no discoverable....
+
 
 
 # Restart the server
