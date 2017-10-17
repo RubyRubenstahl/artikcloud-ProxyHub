@@ -3,7 +3,7 @@
 ARTIK Cloud Proxy Hub application is a hub, which  
  - discovers your local physical devices
  - creates virtual devices on ARTIK Cloud for them or link them to your exising virtual devices
- - proxies messages/Actions between ARTIK Cloud and physical devices via proxies on the hub.
+ - hosts multiple proxies, each of them proxies messages/Actions between ARTIK Cloud and one type of physical devices.
 
 You can use Proxy Hub repo in the three ways:
 
@@ -11,7 +11,7 @@ You can use Proxy Hub repo in the three ways:
 2. Extend this proxy hub by adding a [new proxy](#add-a-new-proxy). Then the hub can talk to more types of devices (not limited to the ones under `/proxies`).
 3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer in order to use the hub.
 
-We will add new proxies to this repo. Please check back from time to time.
+**We will add new proxies to this repo. Please check back from time to time.**
 
 ## Requirements
 @WAITFORENG
@@ -47,7 +47,7 @@ Note it might take up to 1h on a slow computer to finish installation.
  
  ![Add Devices](./img/screen2.png)
  
- There are two types of devices: discoverable by hub and nondiscoverable. The workflow of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must added it manually.
+  There are two types of devices: discoverable (by the hub) and non-discoverable. The workflows of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must add it manually.
  
  4. Lets play with TTS Player in the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
