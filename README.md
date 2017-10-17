@@ -30,20 +30,32 @@ Note it might take up to 1h on a slow computer to finish installation.
     ~~~shell
     npm start
     ~~~
+ 
  2. On the terminal, you will see this line:
 "GO TO THIS WEBPAGE TO ACCESS THE UI: <url>"
+ 
  2. Open a browser and load the above url.
+ 
  3. You will be prompted to log in to ARTIK Cloud. After theat, the UI guides you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application info to configure the hub. 
+ 
  4. Now you can play with the hub. Click "Add Another Device". Then you are prompted to select which type of devices to add. 
+ 
  ![Add Devices](./img/screen2.png)
+ 
  There are two types of devices: discoverable by hub and nondiscoverable. The workflow of adding them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby and give you the opportunity to add it to the ARTIK Cloud. If a device is not discoverable, you must added it manually. For example, "Shell Proxy" and "TTS Player" are not discoverable. 
+ 
  4. Lets play with TTS Player in the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
+ 
  5. Go to My ARTIK Cloud. You should see an TTS player has been added to your account.
+ 
  6. Click that device at My ARTIK Cloud to send an action. e.g. Play "How are you!".
   ![Add Devices](./img/screen5_sendAction.png)
+ 
  7. You should hear "How are you" from your computer running hub.
+ 
  8. If needed, add more devices to ARTIK Cloud using the hub.
+ 
  9. Once you have added proxies for your physical devices, you can log off the hub in the browser. **You must keep the server running**. The devices will continue communicate with ARTIK Cloud via proxies on hub. 
  
 ## Add a new proxy
