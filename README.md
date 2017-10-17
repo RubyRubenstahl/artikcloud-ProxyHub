@@ -39,7 +39,9 @@ You can use the Proxy Hub repo in the three ways:
  
  2. Open a browser and load the above url.
  
- 3. You will be prompted to log in to ARTIK Cloud. After you log in, the UI will guide you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application information to configure the hub. ![Proxy Hub Setup Process](screen6_setUpDemo.png)
+ 3. You will be prompted to log in to ARTIK Cloud. After you log in, the UI will guide you through the hub setup process. At the end of this setup process, you have [created an application](https://developer.artik.cloud/documentation/tools/web-tools.html#creating-an-application) in Developer Dashboard and used the application information to configure the hub. 
+ 
+ ![Proxy Hub Setup Process](./img/screen6_setUpDemo.png)
  
  4. Now you can play with the hub. Click "Add Another Device". Then you are prompted to select which type of devices to add. 
  
