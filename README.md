@@ -2,14 +2,14 @@
 
 ARTIK Cloud Proxy Hub application is a hub, which  
  - discovers your local physical devices
- - creates virtual devices on ARTIK Cloud for them or links them to your exising virtual devices
- - hosts multiple proxies, each of them proxies messages/Actions between ARTIK Cloud and one type of physical devices.
+ - creates virtual devices on ARTIK Cloud for them or links them to your existing virtual devices
+ - hosts multiple proxies, each of the proxies messages/Actions between ARTIK Cloud and one type of physical devices.
 
 You can use the Proxy Hub repo in the three ways:
 
-1. Use the Proxy Hub out of box. After [setting up](#setup--installation), follow the [Demo](#demo) section to add and play with devices existing in your local area. The `/proxies` directory lists the supported devices such as Philips Hue, Wemo, Zway et al. 
-2. Extend this proxy hub by adding a [new proxy](#add-a-new-proxy). Then the hub can talk to more types of devices (not limited to the ones under `/proxies`).
-3. Use the code as an example to create your own proxy package that can be distributed to your end users. This way, the end user does not need to perform the steps as the developer in order to use the hub.
+1. Use the Proxy Hub out of the box. After [setting up](#setup--installation), follow the [Demo](#demo) section to add and play with devices existing in your local area. The `/proxies` directory lists the supported devices such as Philips Hue, Wemo, and Zway. 
+2. Extend this proxy hub by adding a [new proxy](#add-a-new-proxy). The hub can then talk to more types of devices (not limited to the ones under `/proxies`).
+3. Use the code as an example to create your own proxy package that can be distributed to your end users. 
 
 **We will add new proxies to this repo. Please check back from time to time.**
 
@@ -20,7 +20,7 @@ You can use the Proxy Hub repo in the three ways:
 
 ## Setup / Installation
 
- 1. Clone this repository if you haven't already done so.
+ 1. Clone this repository.
 
  2. At the root directory and run the command:
     ~~~shell
@@ -52,7 +52,7 @@ You can use the Proxy Hub repo in the three ways:
  4. We will use the TTS Player for the rest of demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You should see you have a TTS player in the hub.
   ![Add Devices](./img/screen4_TTSplayer.png)
  
- 5. Go to [My ARTIK Cloud](https://my.artik.cloud). You should see a TTS player has been added to your account.
+ 5. Go to [My ARTIK Cloud](https://my.artik.cloud). You should see a TTS Player has been added to your account.
  
  6. Click that device at My ARTIK Cloud to send an action. e.g. Play "How are you!".
   ![Add Devices](./img/screen5_sendAction.png)
@@ -61,13 +61,13 @@ You can use the Proxy Hub repo in the three ways:
  
  8. If needed, add more devices to ARTIK Cloud using the hub.
  
- 9. Once you have added proxies for your physical devices, you can log off the hub in the browser. **You must keep the server running**. The devices will continue communicate with ARTIK Cloud via proxies on hub. 
+ 9. Once you have added proxies for your physical devices, you can log off the hub in the browser. **You must keep the server running**. The devices will continue to communicate with ARTIK Cloud via proxies on hub. 
  
 ## Add a new proxy
 
-You can add a new proxy into ARITK Cloud Proxy Hub. Then using the hub, you will be able to add physical devices corresponding to the proxies to  ARTIK Cloud and physical devices can communicate to ARTIK Cloud via the proxy on the hub.
+You can add a new proxy into the ARTIK Cloud Proxy Hub. Using the hub, you will be able to add physical devices corresponding to the proxies in ARTIK Cloud and physical devices will be able to communicate to ARTIK Cloud via the proxy on the hub.
 
-To create a new proxy , add its folder to the `/proxies` folder. Proxies with a folder starting with '_' are not loaded. _template folder contains an example of what you need to do to create a proxy.
+To create a new proxy, add its folder to the `/proxies` folder. Proxies with a folder starting with '_' are not loaded. _template folder contains an example of what you need to do to create a proxy.
 
 Consult the instruction under the `/proxies` folder to learn more.
 
