@@ -1,6 +1,6 @@
 {
   "name": "artik-proxy-hub",
-  "version": "1.4.0-beta",
+  "version": "1.4.1-beta",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "release": "./release.sh"
   },
   "dependencies": {
-    "artikcloud-js": "2.0.2",
+    "artikcloud-js": "4.0.0",
     "body-parser": "^1.15.2",
     "chokidar": "^1.7.0",
     "compression": "^1.7.0",
