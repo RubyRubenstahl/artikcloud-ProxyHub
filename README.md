@@ -17,9 +17,12 @@ The following devices are discoverable by the Proxy Hub:
 * Nest
 * Wemo
 * Z-Way
-* Media Player (virtual)
-* Shell (virtual)
-* TTS Player (virtual)
+
+The following virtual devices are non-discoverable:
+
+* Media Player
+* Shell
+* TTS Player
 
 **We will add new proxies to this repository. Please check back from time to time.**
 
