@@ -18,7 +18,7 @@ The following devices are discoverable by the Proxy Hub:
 * Wemo
 * Z-Way
 
-The following virtual devices are non-discoverable:
+The following devices are non-discoverable:
 
 * Media Player
 * Shell
