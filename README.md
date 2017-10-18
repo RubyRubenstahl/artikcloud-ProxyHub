@@ -15,8 +15,8 @@ You can use the Proxy Hub repository in three ways:
 
 ## Prerequisites
 
-- [node](https://nodejs.org/en/download/)  (Version >= 6.5.0) 
-- [npm](https://www.npmjs.com/get-npm) (Version >= 3.10.0)
+- [node](https://nodejs.org/en/download/)  (Version >= 4.5.0) 
+- [npm](https://www.npmjs.com/get-npm) (Version >= 2.15.9)
 
 ## Setup / Installation
 
