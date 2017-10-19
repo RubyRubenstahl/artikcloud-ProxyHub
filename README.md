@@ -8,7 +8,7 @@ The ARTIK Cloud Proxy Hub is an application that:
 You can use the Proxy Hub repository in three ways:
 
 1. Use the Proxy Hub out of the box. After [setting up](#setup--installation), follow the [Demo](#demo) section to add and play with your nearby devices. The `/proxies` directory includes supported devices, listed below. 
-2. Extend this Proxy Hub by adding a [new proxy](#add-a-new-proxy). The hub can then talk to more types of devices (not limited to the devices listed in `/proxies`).
+2. Extend this Proxy Hub by adding a [new proxy](#add-a-new-proxy). The hub can then communicate to more types of devices (not limited to the devices listed in `/proxies`).
 3. Use the code as an example to create your own proxy package that can be distributed to your end users. 
 
 The following devices are discoverable by the Proxy Hub:
@@ -18,7 +18,7 @@ The following devices are discoverable by the Proxy Hub:
 * Wemo
 * Z-Way
 
-The following devices are non-discoverable:
+The following service devices are available on demand:
 
 * Media Player
 * Shell
@@ -34,6 +34,9 @@ The following devices are non-discoverable:
 ## Setup / Installation
 
  1. Clone this repository.
+    ~~~shell
+    git clone https://github.com/artikcloud/artikcloud-ProxyHub.git
+    ~~~
 
  2. At the root directory, run the command:
     ~~~shell
@@ -60,7 +63,7 @@ The following devices are non-discoverable:
  
  ![Add Devices](./img/screen2.png)
  
-  There are two types of devices: discoverable (by the hub) and non-discoverable. The steps to add them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby devices and give you the opportunity to add it to ARTIK Cloud. If a device is not discoverable (e.g. "Shell Proxy" and "TTS Player"), you must add it manually.
+  There are two types of devices: discoverable (by the hub) and on-demand. The steps to add them are different. If a device (e.g. Philips Hue) is discoverable, the hub will search your nearby devices and give you the opportunity to add it to ARTIK Cloud. If a device is available on-demand (e.g. "Shell Proxy" and "TTS Player"), you will add it manually.
  
  6. We will use the TTS Player for the rest of this demo. Click "+" on "TTS Player" and then click "ADD TO ARTIK Cloud". You will see a TTS player listed as a local device.
   ![Add Devices](./img/screen4_TTSplayer.png)
