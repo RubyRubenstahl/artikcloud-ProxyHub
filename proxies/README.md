@@ -33,28 +33,51 @@ You implement 'init()' for a discoverable device and 'addNewDevice()' for on-dem
 
 ### Discover a device
 
-In the init() function of JS file, using the appropriate libraries discover local devices, and then declare them by emitting a new device event, like below:
- ~~~ javascript
- this.emit('newDevice', {
-  'proxyDeviceInternalId': 'proxyDeviceInternalId',
-  'proxyDeviceName': 'proxyDeviceInternalId',
-  'proxyDeviceTypeName': 'proxyDeviceInternalId',
-  'akcDtid': 'artikCloudDeviceTypeId',
-  'proxyDeviceData': 'proxyDeviceData'
+In the init() function of JS file, discover local devices, and then declare them by emitting a 'newDevice' event. To discove a device, you normally need the libraries provided by the manufacture of that type of devices. 
+
+The following code snippet uses the faked 3rd party device libary called sdk_bluetoothlock. For working examples, consult ../philips-hue/ and ../wemo/.
+
+~~~ javascript
+ bleLocker.prototype.init = function () {
+  /* Use the appropriate libraries to discover local devices and then */
+  /* emit "newDevice" for each device found */
+  device_info = sdk_bluetoothlock.onDiscover( function(device_info){
+    this.emit('newDevice', {
+      'proxyDeviceInternalId': device_info.id,
+      'proxyDeviceName': device_info.name,
+      'proxyDeviceTypeName': 'ProxyDT',
+      'akcDtid': 'dt1234',
+      'proxyDeviceData': device_info.data
+    })
+    
+    // The following emit function will send a message to ARTIK Cloud. Payload format should be consistent the corresponding device Manifest. Here it is assumed that payload is {'state', boolean}
+    this.emit('newMessage', device_info.id, { 'state': device_info.data.status })
   })
- ~~~
+  
+  // If needed, send status massege to ARTIK Cloud upon state of the device changes
+  sdk_bluetoothlock.onNewEvent( function(device_info){
+    this.emit('newMessage', device_info.id, { 'state': device_info.data.status })
+  })
+
+  sdk_bluetoothlock.startDiscovery()
+}
+~~~
 
 proxyDeviceInternalId: you manage it as you want
 proxyDeviceName: choose a relevant device name
-proxyDeviceTypeName: internal device type name
-akcDtid: device type ID on ARTIK Cloud
+proxyDeviceTypeName: the device type name shown in the hub. You define it.
+akcDtid: [ARTIK Cloud device type ID](https://developer.artik.cloud/documentation/getting-started/basics.html#device-id-and-device-type)
 proxyDeviceData: custom data that you manage yourself
 
-You leave addNewDevice() empty for a discoverable device.
+For certain fields, you may consider put their values in the config.json and read the values from it. 
+
+Leave addNewDevice() empty for a discoverable device.
 
 ### Add an on-demain device
 
-You implement addNewDevice() function and leave init() empty:
+You implement addNewDevice() function and leave init() empty. 
+
+The following code snippet illustrates the implementation of addNewDevice(). For working examples, consult ../shell/ and ../mediaplayer/.
 
  ~~~ javascript
 Shell.prototype.addNewDevice = function () {
@@ -75,12 +98,15 @@ Shell.prototype.addNewDevice = function () {
   lastState[id] = 'off'
 }
  ~~~
+
 Each time such device is linked to the user's ARTIK Cloud account, a new device of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account.
-This device could represent a service (e.g. Shell proxy, TTS player, Media player), rather than a physical device.
 
-## Add send status
+## Send status to ARTIK Cloud
 
-Simply emit a new message event, with the JSON message describing the device status
+The proxy should have a logic to send status of the device to ARTIK Cloud from time to time (e.g. init()).
+
+To send, simply call emit() with 'newMessage' type. In addition, pass in the JSON message describing the device status. The message format should be consistent with the corresponding device Manifest.
+
 ~~~ javascript
 this.emit('newMessage',
   'proxyDeviceInternalId',
@@ -88,32 +114,40 @@ this.emit('newMessage',
 )
 ~~~
 
-## Add actions
+## Receive Actions from ARTIK Cloud
 
-For each action defined on the device type's manifest, create a function post fixed by "Action" (e.g. setStateAction)
+For each action defined on the device Manifest, create a function post fixed by "Action". For example, if the Manifes defines Action "setState", you implements function setStateAction here.
+
 ~~~ javascript
-/**
- * Actions: create 1 function for each action postfix with Action
- * proxyDeviceInfo: {
-    'proxyName': proxyName,
-    'proxyDeviceId': proxyDeviceId,
-    'proxyDeviceInternalId': proxyDeviceInternalId,
-    'proxyDeviceName': proxyDeviceName,
-    'akcDtid': akcDtid,
-    'proxyDeviceData': proxyDeviceData
-  }
- */
-Template.prototype.setStateAction = function (proxyDeviceInfo, actionParams) {
+
+Template.prototype.setOnAction = function (proxyDeviceInfo) {
+  // actionParams map can be ommited for action with no parameters
 }
 ~~~
 
-As its name implies, the actionParams object contains the action's parameters (as JSON map).
-
-## Add schedule update
-
-Using the scheduledUpdate function, you could perform processing at a regular interval. Noticeably, refreshing the devices statuses.
+If an Action has parameters, you can get them from actionParams as a JSON map:  
 ~~~ javascript
-Template.prototype.scheduledUpdate = function () { }
+Template.prototype.setStateAction = function (proxyDeviceInfo, actionParams) {
+  // Act on Action to set the state of the device managed by the hub and use
+  // received parameter to perform that operation.
+}
+~~~
+
+## Schedule update
+
+You can perform update at a regular interval. For example, refresh the devices status and send them to ARTIK Cloud. To do so, you need to put information into config.json and implement scheduledUpdate function in javascript file. The following is an example.
+
+~~~ json
+// in config file
+  "scheduleUpdate": true,
+  "scheduleUpdatePeriodMs": 30000,
+~~~
+
+
+~~~ javascript
+Template.prototype.scheduledUpdate = function () { 
+  // Do device refreshing and status update with ARTIK Cloud
+}
 ~~~
 
 ## Add user parameters by proxy

@@ -4,7 +4,7 @@
     "filename": "log/proxyhub.log"
   },
   "dir": {
-    "root": "/Users/wilfred/dev/sami/salamis/tools/artik-proxy-hub",
+    "root": "",
     "proxies": "./proxies",
     "data": "./data",
     "publicDir": "public"

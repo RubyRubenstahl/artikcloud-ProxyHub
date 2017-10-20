@@ -19,57 +19,76 @@ function Template(config) {
  */
 Util.inherits(Template, EventEmitter)
 
-/**
- *  Add a discoverable device
- */
-Template.prototype.init = function () {
+// /**
+//  *  Add a discoverable device
+//  *
+//  *  The following is an example, which use faked 3rd party device libary
+//  *  called sdk_bluetoothlock. For working examples, consult
+//  *  ../philips-hue/
+//  *  ../wemo/
+//  *
+//  */
+// Template.prototype.init = function () {
+//   /* Use the appropriate libraries to discover local devices and then */
+//   /* emit  "newDevice" for each device found 
+//    * device_info: device data saved on the discovered device
+//    */
+//   device_info = sdk_bluetoothlock.onDiscover( function(device_info){
+//     this.emit('newDevice', {
+//       'proxyDeviceInternalId': device_info.id,
+//       'proxyDeviceName': device_info.name,
+//       'proxyDeviceTypeName': 'ProxyDT',
+//       'akcDtid': 'dt1234',
+//       'proxyDeviceData': device_info.data
+//     })
+    
+//     // The following emit function will send a message to ARTIK Cloud. Payload format should be consistent
+//     // the corresponding device Manifest. Here it is assumed that payload is {'state', string}
+//     this.emit('newMessage', device_info.id, { 'state': device_info.data.status })
+//   })
+  
+//   // If needed, send status massege to ARTIK Cloud upon state of the device changes
+//   sdk_bluetoothlock.onNewEvent( function(device_info){
+//     this.emit('newMessage', device_info.id, { 'state': device_info.data.status })
+//   })
 
-  /* using the appropriate libraries discover local devices and then */
-  /* emit  "newDevice" for each device found */
+//   sdk_bluetoothlock.startDiscovery()
+// }
+//
+// //No need to implement the following for a discoverable device
+// //Template.prototype.addNewDevice = function () { }
+
+/**
+ * OR Add Device on-demand (example: ../ttsplayer/*.js)
+ * 
+ */
+Template.prototype.addNewDevice = function () {
+
+  /* you can also arbitrarily declare a device */
+  /* emit 1 "newDevice"  */
   this.emit('newDevice', {
     'proxyDeviceInternalId': 'proxyDeviceInternalId',
     'proxyDeviceName': 'proxyDeviceName',
     'proxyDeviceTypeName': 'proxyDeviceTypeName',
-    'akcDtid': 'artikCloudDeviceTypeId',
-    'proxyDeviceData': '(custom) proxyDeviceData'
+    'akcDtid': 'artikCloudDeviceTypeId', // From ARTIK Cloud: https://developer.artik.cloud/documentation/getting-started/basics.html#device-id-and-device-type
+    'proxyDeviceData': '(custom) proxyDeviceData' //
   })
 
-  /* send a device status message whenever you want using the "newMessage" event */
-  this.emit('newMessage',
-    'proxyDeviceInternalId',
-    { 'state': 'on' }
-  )
+  // The following emit function will send a message to ARTIK Cloud. Payload format should be consistent
+  // with the corresponding device Manifest. Here it is assumed that payload is {'state', string}
+  this.emit('newMessage', proxyDeviceInternalId, { 'state': 'off' })
+
+  /* 
+   * Each time such device is linked to the user's ARTIK Cloud account, a new device 
+   * of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account
+   * This device could represent a service (e.g. Shell proxy, TTS player, Media player), 
+   * rather than a physical device.
+   */
 }
-// No need to implement the following for a discoverable device
-Template.prototype.addNewDevice = function () { }
-
-// /**
-//  * Add Device on-demand
-//  */
-// Template.prototype.addNewDevice = function () {
-
-//   /* you can also arbitrarily declare a device */
-//   /* emit 1 "newDevice"  */
-//   this.emit('newDevice', {
-//     'proxyDeviceInternalId': 'proxyDeviceInternalId',
-//     'proxyDeviceName': 'proxyDeviceName',
-//     'proxyDeviceTypeName': 'proxyDeviceTypeName',
-//     'akcDtid': 'artikCloudDeviceTypeId',
-//     'proxyDeviceData': '(custom) proxyDeviceData'
-//   })
-
-//   /* 
-//    * Each time such device is linked to the user's ARTIK Cloud account, a new device 
-//    * of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account
-//    * This device could represent a service (e.g. Shell proxy, TTS player, Media player), 
-//    * rather than a physical device.
-//    */
-// }
 
 /**
  * Do something on schedule defined defined in proxy config
  * if in config.json: { scheduleUpdate: true, scheduleUpdatePeriodMs:XXX }
- * deviceInfo: device data saved on device found
  */
 Template.prototype.scheduledUpdate = function () { }
 
@@ -100,14 +119,6 @@ Template.prototype.getStatus = function () {
 
 /**
  * Actions: create 1 function for each action postfix with Action
- * proxyDeviceInfo: {
-    'proxyName': proxyName,
-    'proxyDeviceId': proxyDeviceId,
-    'proxyDeviceInternalId': proxyDeviceInternalId,
-    'proxyDeviceName': proxyDeviceName,
-    'akcDtid': akcDtid,
-    'proxyDeviceData': proxyDeviceData
-  }
  * actionParams: ARTIK Cloud received action parameters JSON map (i.e.)
  */
 Template.prototype.setOnAction = function (proxyDeviceInfo) {
@@ -119,7 +130,10 @@ Template.prototype.setOffAction = function (proxyDeviceInfo) {
 }
 
 Template.prototype.setLevelAction = function (proxyDeviceInfo, actionParams) {
+  // Act on Action to set the state of the device managed by the hub and use
+  // received parameter to perform that operation.
   var level = actionParams.level
+  // do more
 }
 
 Template.prototype.setDefaultLevelAction = function (proxyDeviceInfo, actionParams) {
