@@ -32,7 +32,8 @@ There are two types of devices: discoverable and on-demand.
 You implement 'init()' for a discoverable device and 'addNewDevice()' for on-demaind one. 
 
 ### Discover a device
- - In the init() function of JS file, using the appropriate libraries discover local devices, and then declare them by emitting a new device event, like below:
+
+In the init() function of JS file, using the appropriate libraries discover local devices, and then declare them by emitting a new device event, like below:
  ~~~ javascript
  this.emit('newDevice', {
   'proxyDeviceInternalId': 'proxyDeviceInternalId',
@@ -51,7 +52,7 @@ proxyDeviceData: custom data that you manage yourself
 
 You leave addNewDevice() empty for a discoverable device.
 
-## Add an on-demain device
+### Add an on-demain device
 
 You implement addNewDevice() function and leave init() empty:
 
