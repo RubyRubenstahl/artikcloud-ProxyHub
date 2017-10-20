@@ -12,16 +12,26 @@ The proxy is in charge of:
  - Relaying action from the cloud to local device
  - This relaying could be through an hub / intermediate software / manufacturer SDK / protocol (e.g. Zigbee, Z-Wave) / external APIs
 
-## Create a proxy (find an example)
+## Preparation
 
+ - If you have not created the corresponding device type for this proxy yet, create an ARTIK Cloud device type and define the Manifest. Note its Device Type ID (DTID).
  - Duplicate the _template folder in artik-proxy-hub/proxies
- - Rename it as you want (folder name starting with an '_' will not be loaded)
- - Edit the package.json and template.js content (e.g. project and class name) accordingly
- - Import the API libraries you need in package.json. Running "npm install' in the root of the Proxy Hub will install these libraries
+ - Rename it to a meaningful name (folder name starting with an '_' will not be loaded)
+ - Edit the package.json
+ -- Fill in "name" field with a meaningful name 
+ -- Import the API libraries you use in JS file.
+ - Update template.js:
+ -- Rename file
+ -- Rename Template class  
 
-## Add discover
+**The rest of the article is about how to modify the JavaScript file. **
 
- - If you have not created it yet, create an AKC device type + manifest, with the appropriate device data fields + actions name that you want to support on ARTIK Cloud Developer Portal. Note its Device Type ID (DTID).
+## Add or discover a device
+
+There are two types of devices: discoverable and on-demand.
+You implement 'init()' for a discoverable device and 'addNewDevice()' for on-demaind one. 
+
+### Discover a device
  - In the init() function of JS file, using the appropriate libraries discover local devices, and then declare them by emitting a new device event, like below:
  ~~~ javascript
  this.emit('newDevice', {
@@ -39,9 +49,11 @@ proxyDeviceTypeName: internal device type name
 akcDtid: device type ID on ARTIK Cloud
 proxyDeviceData: custom data that you manage yourself
 
-## Declare a device 
+You leave addNewDevice() empty for a discoverable device.
 
-You can also arbitrarily declare a device in the addNewDevice() function :
+## Add an on-demain device
+
+You implement addNewDevice() function and leave init() empty:
 
  ~~~ javascript
 Shell.prototype.addNewDevice = function () {

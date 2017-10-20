@@ -20,7 +20,7 @@ function Template(config) {
 Util.inherits(Template, EventEmitter)
 
 /**
- * Discovery
+ *  Add a discoverable device
  */
 Template.prototype.init = function () {
 
@@ -40,29 +40,31 @@ Template.prototype.init = function () {
     { 'state': 'on' }
   )
 }
+// No need to implement the following for a discoverable device
+Template.prototype.addNewDevice = function () { }
 
-/**
- * Device on-demand
- */
-Template.prototype.addNewDevice = function () {
+// /**
+//  * Add Device on-demand
+//  */
+// Template.prototype.addNewDevice = function () {
 
-  /* you can also arbitrarily declare a device */
-  /* emit 1 "newDevice"  */
-  this.emit('newDevice', {
-    'proxyDeviceInternalId': 'proxyDeviceInternalId',
-    'proxyDeviceName': 'proxyDeviceName',
-    'proxyDeviceTypeName': 'proxyDeviceTypeName',
-    'akcDtid': 'artikCloudDeviceTypeId',
-    'proxyDeviceData': '(custom) proxyDeviceData'
-  })
+//   /* you can also arbitrarily declare a device */
+//   /* emit 1 "newDevice"  */
+//   this.emit('newDevice', {
+//     'proxyDeviceInternalId': 'proxyDeviceInternalId',
+//     'proxyDeviceName': 'proxyDeviceName',
+//     'proxyDeviceTypeName': 'proxyDeviceTypeName',
+//     'akcDtid': 'artikCloudDeviceTypeId',
+//     'proxyDeviceData': '(custom) proxyDeviceData'
+//   })
 
-  /* 
-   * Each time such device is linked to the user's ARTIK Cloud account, a new device 
-   * of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account
-   * This device could represent a service (e.g. Shell proxy, TTS player, Media player), 
-   * rather than a physical device.
-   */
-}
+//   /* 
+//    * Each time such device is linked to the user's ARTIK Cloud account, a new device 
+//    * of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account
+//    * This device could represent a service (e.g. Shell proxy, TTS player, Media player), 
+//    * rather than a physical device.
+//    */
+// }
 
 /**
  * Do something on schedule defined defined in proxy config
