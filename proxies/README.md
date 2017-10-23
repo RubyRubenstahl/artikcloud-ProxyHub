@@ -39,8 +39,12 @@ The following code snippet uses the faked 3rd party device libary called sdk_blu
 
 ~~~ javascript
  bleLocker.prototype.init = function () {
-  /* Use the appropriate libraries to discover local devices and then */
-  /* emit "newDevice" for each device found */
+  /* Use the appropriate libraries to discover local devices, and then */
+  /* emit "newDevice" for each device found. This will display the device 
+   * in the hub UI.
+   *
+   * device_info: device data from the discovered device
+   */
   device_info = sdk_bluetoothlock.onDiscover( function(device_info){
     this.emit('newDevice', {
       'proxyDeviceInternalId': device_info.id,
@@ -105,7 +109,7 @@ Each time such device is linked to the user's ARTIK Cloud account, a new device 
 
 The proxy should have a logic to send status of the device to ARTIK Cloud from time to time (e.g. init()).
 
-To send, simply call emit() with 'newMessage' type. In addition, pass in the JSON message describing the device status. The message format should be consistent with the corresponding device Manifest.
+To send, call emit() with 'newMessage' type. Pass in the JSON message describing the device status. The message format should be consistent to the corresponding device Manifest defined in ARTIK Cloud.
 
 ~~~ javascript
 this.emit('newMessage',
@@ -135,7 +139,7 @@ Template.prototype.setStateAction = function (proxyDeviceInfo, actionParams) {
 
 ## Schedule update
 
-You can perform update at a regular interval. For example, refresh the devices status and send them to ARTIK Cloud. To do so, you need to put information into config.json and implement scheduledUpdate function in javascript file. The following is an example.
+The hub can perform update at a regular interval. For example, refresh the devices status and send them to ARTIK Cloud. To do so, you need to put the  information into config.json and implement scheduledUpdate function in the javascript file. The following is an example:
 
 ~~~ json
 // in config file
@@ -147,54 +151,42 @@ You can perform update at a regular interval. For example, refresh the devices s
 ~~~ javascript
 Template.prototype.scheduledUpdate = function () { 
   // Do device refreshing and status update with ARTIK Cloud
+  // Use the value of 'scheduleUpdatePeriodMs' from config.json
 }
 ~~~
 
-## Add user parameters by proxy
-Default user parameters by proxy: 
+## Add user parameters for proxy
 
-Define them in the userParameters array in the config.json file (at the root of the proxy sub-folder).
-They could store user credentials on external platform, for instance on Nest proxy plug-in:
+You can optionally add user parameters for a proxy. For example, use them to store user credentials on the external platform. Define them in the "userParameters" array in the config.json file (at the root of the proxy sub-folder). The following is "userParameters" from config.json for Nest proxy :
 ~~~ javascript
-{
-  "public": {
-    "displayName": "nest",
-    "description": "nest",
-    "userParameters": [
-      {
-        "name": "username",
-        "value": "",
-        "type": "string",
-        "description": "NEST account login e-mail"
-      },
-      {
-        "name": "password",
-        "value": "",
-        "type": "password",
-        "description": "NEST account password"
-      }
-    ],
-    "userParametersPerDevice": {},
-    "akcDtNames": [
-      "Nest Thermostat Proxy"
-    ]
-  },
-  "scheduleUpdatePeriodMs": 60000
+public: {
+  ...
+  "userParameters": [
+    {
+      "name": "username",
+      "value": "",
+      "type": "string",
+      "description": "NEST account login e-mail"
+    },
+    {
+      "name": "password",
+      "value": "",
+      "type": "password",
+      "description": "NEST account password"
+    }
+  ],
+  ...
 }
 ~~~
 
-Access user parameters by proxy from proxy code:
-
-The configuration object (config) will be already loaded, access the field you are interested in:
+You can access user parameters within the proxy code as the following:
 ~~~ javascript
 var userParams = config.public.userParameters
 username = userParams[0].value
 password = userParams[1].value
 ~~~
 
-Edit user parameters by proxy from proxy code:
-
-Update the configuration object (config), serialize it as JSON objet and write it to the config.json file:
+You can also update "userParameters" of config.json in the proxy code. You need to do this if the user modifies the parameters via UI. The following example show how to change the user name. In the proxy code, update the configuration object with the one provided by the user, serialize it as JSON objet, and then write it to the config.json file:
 ~~~ javascript
 this._config.username = user
 var configPath = path.resolve(__dirname, 'config.json')
@@ -203,7 +195,7 @@ Fs.writeFileSync(configPath, JSON.stringify(this._config, null, 2))
 
 Validate parameters
 
-You could use the validateUserParameters to check the parameters provided by the user. Throw any JavaScript exception to warn the user. 
+In your proxy JavaScript code, you could use validateUserParameters() to check the parameters provided by the user. Throw any JavaScript exception to warn the user. 
 
 ~~~ javascript
 Template.prototype.validateUserParameters = function (userParams) {
@@ -211,78 +203,57 @@ Template.prototype.validateUserParameters = function (userParams) {
 }
 ~~~ 
 
-## Add user parameters by device
+## Add user parameters for device
 
-Default user parameters by device:
-Pre-fill the userParametersPerDevice group in the config.json file (at the root of the proxy sub-folder)
+You can setup default parameters for a device. Fill the userParametersPerDevice group in the config.json file (at the root of the corresponding proxy sub-folder).
+
 ~~~ json
 {
-  "public": {
-    "displayName": "Media Player",
-    "description": "Play media file from ARTIK Cloud",
-    "userParametersPerDevice": {
-      "mediaplayer": {
-        "displayName": "Media player command",
-        "value": "mplayer",
-        "description": "Shell command used to play media."
-      }
+  "userParametersPerDevice": {
+    "mediaplayer": {
+      "displayName": "Media player command",
+      "value": "mplayer",
+      "description": "Shell command used to play media."
     },
-    "akcDtNames": [
-      "Media Player Proxy"
-    ]
   },
-  "scheduleUpdatePeriodMs": 5000,
-  "akcDtid": {
-    "mediaPlayer": "dt7e7b76ae3d094678b8287da8fcff7c77"
-  }
 }
 ~~~
 
-The display name, value and description will be reflected on the ProxyHub Web Interface.
+"userParametersPerDevice" can have multiple objects. For each object (e.g."mediaplayer"), displayName, value and description are reflected on the ProxyHub Web Interface like the following:
+![Proxy Hub user device parameter](./img/mediaplayer_userDevParam.png)
 
-Access user parameters by device from proxy code
-
-You can access them from proxyDeviceInfo.userParametersPerDevice object
+The proxy code can access device's user parameters via proxyDeviceInfo.userParametersPerDevice object as the following example:
 ~~~ javascript
-Shell.prototype.storeCommandToGetState = function (proxyDeviceInfo)
-{
-  if ("state" in proxyDeviceInfo.userParametersPerDevice)
-    commandToGetState[proxyDeviceInfo.proxyDeviceInternalId] = proxyDeviceInfo.userParametersPerDevice.state
-}
+ var player = proxyDeviceInfo.userParametersPerDevice.mediaplayer.value
 ~~~
-
-Edit user parameters by device from proxy code
 
 ## Logging
-Include our custom logging module
+
+To log, include the logging module and create an logger object as following:
 ~~~ javascript
-var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')ogger = ProxyHubLogger('<Proxy plug-in name>', this._config)
-logger = ProxyHubLogger(<name display in log>, <config of the proxy>
+var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
+logger = ProxyHubLogger(<name display in log>, <config file of the proxy>)
 ~~~
 
-Configuration
+In config.json, you can specify the logging level and the log file name. If you do not specify a filename, the logs will be displayed on your terminal.
 
-You can change your proxy plug-in logging level from the config.json file.
-If you do not specify a filename, the logs will be displayed on your terminal.
-
-~~~json
+~~~ json
 "log": {
   "level": "debug",
   "filename": "log/proxyhub.log"
 }
 ~~~
 
-Usage example
+Blow is an usage example:
 
 ~~~json
 logger.log('debug', 'Create MediaPlayer proxy')
 logger.debug("userParams = " + JSON.stringify(userParams))
 ~~~
 
-## Getting the proxy status
+## Get the proxy status
 
-On the getStatus() function, you can reflect your current proxy plug-in status.
-You could warn the user on next action to perform.
+On the getStatus() function, you can reflect the status of the proxy. Optionally warn the user on next action to perform. Bleow is the example.
 
 ~~~javascript
 PhilipsHue.prototype.getStatus = function () {

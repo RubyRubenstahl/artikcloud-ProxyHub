@@ -29,9 +29,10 @@ Util.inherits(Template, EventEmitter)
 //  *
 //  */
 // Template.prototype.init = function () {
-//   /* Use the appropriate libraries to discover local devices and then */
-//   /* emit  "newDevice" for each device found 
-//    * device_info: device data saved on the discovered device
+//   /* Use the appropriate libraries to discover local devices and then 
+//    * emit  "newDevice" for each device found. The discovered device will appear 
+//    * in the hub UI.
+//    * device_info: device data from the discovered device
 //    */
 //   device_info = sdk_bluetoothlock.onDiscover( function(device_info){
 //     this.emit('newDevice', {
@@ -77,21 +78,55 @@ Template.prototype.addNewDevice = function () {
   // The following emit function will send a message to ARTIK Cloud. Payload format should be consistent
   // with the corresponding device Manifest. Here it is assumed that payload is {'state', string}
   this.emit('newMessage', proxyDeviceInternalId, { 'state': 'off' })
-
-  /* 
-   * Each time such device is linked to the user's ARTIK Cloud account, a new device 
-   * of the same kind will "pop-up" as a suggestion to link to the ARTIK Cloud account
-   * This device could represent a service (e.g. Shell proxy, TTS player, Media player), 
-   * rather than a physical device.
-   */
-}
+ }
 
 /**
- * Do something on schedule defined defined in proxy config
- * if in config.json: { scheduleUpdate: true, scheduleUpdatePeriodMs:XXX }
+ * Do something on schedule.
+ * The following method is called only if 'scheduleUpdate' field is true
+ * in config.json.
+ *
+ * An example in config.json: { scheduleUpdate: true, scheduleUpdatePeriodMs:XXX }
+ * The method uses the value of 'scheduleUpdatePeriodMs'.
  */
 Template.prototype.scheduledUpdate = function () { }
 
+/* In getStatus() function, you can reflect your current proxy status.
+* You could warn the user on next action to perform.
+*  
+* For example:
+* PhilipsHue.prototype.getStatus = function () {
+*   if (this.hueBridgeLinkButtonHasNotBeenPressed) {
+*     return {
+*       'level': 'ERROR',
+*       'message': 'Please press your Hue Bridge Link Button to discover your lights',
+*       'code': 403
+*     }
+*   }
+*   else {
+*     return {
+*       'level': 'OK',
+*       'message': '',
+*       'code': 200
+*     }
+*   }
+* }
+*
+* The level can be 'OK', 'WARNING', or 'ERROR' and the code can be 200, 401, or 403. */
+* Alert the user to perform an action
+* return {
+*    'level': 'ERROR',
+*    'message': 'You should set your ACME Corporation's account credentials in the proxy's User Parameters',
+*    'code': 401
+*  } 
+
+* Alert the user to perform an action on the device that should be on-boarded */
+* return {
+*    'level': 'WARNING',
+*    'message': 'You should press your device authentication button',
+*    'code': 403
+*  }
+*
+*/
 Template.prototype.getStatus = function () {
   /* The Proxy is up and running */
   return {
@@ -100,22 +135,7 @@ Template.prototype.getStatus = function () {
     'code': 200
   }
 
-  /* The level can be 'OK', 'WARNING', or 'ERROR' and the code can be 200, 401, or 403. */
-
-  /* Alert the user to perform an action */
-  /* return {
-    'level': 'ERROR',
-    'message': 'You should set your ACME Corporation's account credentials in the proxy's User Parameters',
-    'code': 401
-  } */
-
-  /* Alert the user to perform an action on the device that should be on-boarded */
-  /* return {
-    'level': 'WARNING',
-    'message': 'You should press your device authentication button',
-    'code': 403
-  } */
-}
+ }
 
 /**
  * Actions: create 1 function for each action postfix with Action
