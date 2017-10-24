@@ -253,6 +253,7 @@ You can setup default user parameters for individual devices. Fill in 'userParam
 ~~~
 
 "userParametersPerDevice" can have multiple objects. For each object (e.g."mediaplayer"), displayName, value and description show on the Web UIs of ARTIK Cloud Proxy Hub. The following UI example match the values in the above json example:
+
 ![Proxy Hub user device parameter](../img/mediaplayer_userDevParam.png)
 
 The JavaScript code can access device's user parameters via "proxyDeviceInfo.userParametersPerDevice" object as shown below:
