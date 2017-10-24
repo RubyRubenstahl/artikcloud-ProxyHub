@@ -111,15 +111,15 @@ Template.prototype.scheduledUpdate = function () { }
 *   }
 * }
 *
-* The level can be 'OK', 'WARNING', or 'ERROR' and the code can be 200, 401, or 403. */
+* The level can be 'OK', 'WARNING', or 'ERROR' and the code can be 200, 401, or 403. 
 * Alert the user to perform an action
 * return {
 *    'level': 'ERROR',
 *    'message': 'You should set your ACME Corporation's account credentials in the proxy's User Parameters',
 *    'code': 401
 *  } 
-
-* Alert the user to perform an action on the device that should be on-boarded */
+*
+* Alert the user to perform an action on the device that should be on-boarded
 * return {
 *    'level': 'WARNING',
 *    'message': 'You should press your device authentication button',
@@ -141,30 +141,22 @@ Template.prototype.getStatus = function () {
  * Actions: create 1 function for each action postfix with Action
  * actionParams: ARTIK Cloud received action parameters JSON map (i.e.)
  */
+// manifest action is named "setOn" -> name of the function is "setOnAction"
 Template.prototype.setOnAction = function (proxyDeviceInfo) {
   // actionParams map can be ommited for action with no parameters
 }
 
+// manifest action is named "setOn" -> name of the function is "setOnAction"
 Template.prototype.setOffAction = function (proxyDeviceInfo) {
 
 }
 
+// manifest action is named "setLevel" -> name of the function is "setLevelAction"
 Template.prototype.setLevelAction = function (proxyDeviceInfo, actionParams) {
   // Act on Action to set the state of the device managed by the hub and use
   // received parameter to perform that operation.
   var level = actionParams.level
   // do more
-}
-
-Template.prototype.setDefaultLevelAction = function (proxyDeviceInfo, actionParams) {
-  // retrieve the default level from the user parameters on proxy
-  var userParams = config.public.userParameters
-  var level = parseInt(userParams[1].value)
-}
-
-Template.prototype.setPreferedLevelAction = function (proxyDeviceInfo, actionParams) {
-  // retrieve the prefered level from the user parameters on device
-  var level = parseInt(proxyDeviceInfo.userParametersPerDevice.preferedLevel)
 }
 
 Template.prototype.validateUserParameters = function (userParams) {
