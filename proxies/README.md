@@ -12,28 +12,31 @@ The proxy is in charge of:
  - Relaying action from the cloud to local device
  - This relaying could be through an hub / intermediate software / manufacturer SDK / protocol (e.g. Zigbee, Z-Wave) / external APIs
 
-## Preparation
+## Get started
 
  - If you have not created the corresponding device type for this proxy yet, create an ARTIK Cloud device type and define the Manifest. Note its Device Type ID (DTID).
  - Duplicate the _template folder in artik-proxy-hub/proxies
- - Rename it to a meaningful name (folder name starting with an '_' will not be loaded)
- - Edit the package.json
- -- Fill in "name" field with a meaningful name 
- -- Import the API libraries you use in JS file.
+ - Rename the folder to a meaningful name (folder name starting with an '_' will not be loaded)
+ - Update package.json: 
+   -- Fill in "name" field with a meaningful name
+   -- Import the API libraries you use in JS file.
  - Update template.js:
- -- Rename file
- -- Rename Template class  
+   -- Rename it to a meaningful name
+   -- Rename Template class
+   -- Implement logics relevant to your proxy
+ - Update config.json 
 
-**The rest of the article is about how to modify the JavaScript file. **
+The rest of the article discusses how to implement logics in the JavaScript file and how to setup configuration in the config file. 
+
+**If not specified, the coding discussion is about the JavaScript file.**
 
 ## Add or discover a device
 
-There are two types of devices: discoverable and on-demand.
-You implement 'init()' for a discoverable device and 'addNewDevice()' for on-demaind one. 
+There are two types of devices: discoverable and on-demand. You implement 'init()' for a discoverable device and 'addNewDevice()' for on-demaind one. 
 
 ### Discover a device
 
-In the init() function of JS file, discover local devices, and then declare them by emitting a 'newDevice' event. To discove a device, you normally need the libraries provided by the manufacture of that type of devices. 
+In the init() function of JavaScript file, discover local devices, and then declare them by emitting a 'newDevice' event. To discove a device, you normally need the libraries provided by the manufacture of that type of devices. 
 
 The following code snippet uses the faked 3rd party device libary called sdk_bluetoothlock. For working examples, consult ../philips-hue/ and ../wemo/.
 
@@ -79,7 +82,7 @@ Leave addNewDevice() empty for a discoverable device.
 
 ### Add an on-demain device
 
-You implement addNewDevice() function and leave init() empty. 
+You implement 'addNewDevice()' function and leave 'init()' empty. 
 
 The following code snippet illustrates the implementation of addNewDevice(). For working examples, consult ../shell/ and ../mediaplayer/.
 
@@ -155,9 +158,32 @@ Template.prototype.scheduledUpdate = function () {
 }
 ~~~
 
+## Get the proxy status
+
+On the getStatus() function, you can reflect the status of the proxy. Optionally warn the user on the next action to perform. Be/ow is the example.
+
+~~~javascript
+PhilipsHue.prototype.getStatus = function () {
+  if (this.hueBridgeLinkButtonHasNotBeenPressed) {
+    return {
+      'level': 'ERROR',
+      'message': 'Please press your Hue Bridge Link Button to discover your lights',
+      'code': 403
+    }
+  }
+  else {
+    return {
+      'level': 'OK',
+      'message': '',
+      'code': 200
+    }
+  }
+}
+~~~
+
 ## Add user parameters for proxy
 
-You can optionally add user parameters for a proxy. For example, use them to store user credentials on the external platform. Define them in the "userParameters" array in the config.json file (at the root of the proxy sub-folder). The following is "userParameters" from config.json for Nest proxy :
+You can optionally add user parameters for a proxy. For example, use the parameters to store user credentials of the external platform. Define them in the "userParameters" array in the config.json file (at the root of the proxy sub-folder). The following is "userParameters" from config.json for Nest proxy :
 ~~~ javascript
 public: {
   ...
@@ -179,23 +205,21 @@ public: {
 }
 ~~~
 
-You can access user parameters within the proxy code as the following:
+You can access user parameters within the JavaScript code as the following:
 ~~~ javascript
 var userParams = config.public.userParameters
 username = userParams[0].value
 password = userParams[1].value
 ~~~
 
-You can also update "userParameters" of config.json in the proxy code. You need to do this if the user modifies the parameters via UI. The following example show how to change the user name. In the proxy code, update the configuration object with the one provided by the user, serialize it as JSON objet, and then write it to the config.json file:
+You can also update "userParameters" of config.json in the JavaScript code. You need to do this if the user modifies the parameters via UI. The following example show how to change the user name. In the JavaScript code, update the configuration object with the one provided by the user, serialize it as JSON objet, and then write it to the config.json file:
 ~~~ javascript
 this._config.username = user
 var configPath = path.resolve(__dirname, 'config.json')
 Fs.writeFileSync(configPath, JSON.stringify(this._config, null, 2))
 ~~~
 
-Validate parameters
-
-In your proxy JavaScript code, you could use validateUserParameters() to check the parameters provided by the user. Throw any JavaScript exception to warn the user. 
+You could implement validateUserParameters() in the JavaScript code to check the parameters provided by the user. Throw any JavaScript exception to warn the user. 
 
 ~~~ javascript
 Template.prototype.validateUserParameters = function (userParams) {
@@ -220,9 +244,9 @@ You can setup default parameters for a device. Fill the userParametersPerDevice 
 ~~~
 
 "userParametersPerDevice" can have multiple objects. For each object (e.g."mediaplayer"), displayName, value and description are reflected on the ProxyHub Web Interface like the following:
-![Proxy Hub user device parameter](./img/mediaplayer_userDevParam.png)
+![Proxy Hub user device parameter](../img/mediaplayer_userDevParam.png)
 
-The proxy code can access device's user parameters via proxyDeviceInfo.userParametersPerDevice object as the following example:
+The JavaScript code can access device's user parameters via proxyDeviceInfo.userParametersPerDevice object as the following example:
 ~~~ javascript
  var player = proxyDeviceInfo.userParametersPerDevice.mediaplayer.value
 ~~~
@@ -251,25 +275,13 @@ logger.log('debug', 'Create MediaPlayer proxy')
 logger.debug("userParams = " + JSON.stringify(userParams))
 ~~~
 
-## Get the proxy status
+## Mandatory fields in config.json
 
-On the getStatus() function, you can reflect the status of the proxy. Optionally warn the user on next action to perform. Bleow is the example.
+Your config.json must specify the value of "akcDtNames", which is an array of the ARTIK Cloud device type display names used by your proxy. Below is an example:
 
-~~~javascript
-PhilipsHue.prototype.getStatus = function () {
-  if (this.hueBridgeLinkButtonHasNotBeenPressed) {
-    return {
-      'level': 'ERROR',
-      'message': 'Please press your Hue Bridge Link Button to discover your lights',
-      'code': 403
-    }
-  }
-  else {
-    return {
-      'level': 'OK',
-      'message': '',
-      'code': 200
-    }
-  }
-}
+~~~json
+"akcDtNames": [
+  "Belkin WeMo Switch Proxy",
+  "Belkin WeMo Insight Switch Proxy"
+]
 ~~~
