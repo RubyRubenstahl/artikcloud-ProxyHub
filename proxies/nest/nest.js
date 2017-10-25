@@ -2,12 +2,11 @@ module.exports = Nest
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var Winston = require('winston')
 var md5 = require('js-md5');
 var nest = require('unofficial-nest-api')
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
-var logger = new (Winston.Logger)()
+var logger
 
 var username = ""
 var password = ""

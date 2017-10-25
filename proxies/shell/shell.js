@@ -4,20 +4,18 @@ module.exports = Shell
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var winston = require('winston')
 var Exec = require('child_process').exec
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
-var logger = new winston.Logger()
+var logger
 var errors = []
 var lastState = {}
 var commandToGetState = {}
 
 function Shell(config) {
-  logger.log('debug', 'Create Shell proxy')
   this._config = config
   logger = ProxyHubLogger('SHELL_PROXY', this._config)
-
+  logger.log('debug', 'Create Shell proxy')
   this._akcDtid = config['akcDtid']['shellProxy']
 
   EventEmitter.call(this)

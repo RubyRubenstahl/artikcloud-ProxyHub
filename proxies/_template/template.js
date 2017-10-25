@@ -2,10 +2,9 @@ module.exports = Template
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var Winston = require('winston')
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
-var logger = new (Winston.Logger)()
+var logger
 
 function Template(config) {
   logger.log('debug', 'Create Template proxy')

@@ -2,20 +2,19 @@ module.exports = TTSPlayer
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var Winston = require('winston')
 var say = require('say');
 var errors = []
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
-var logger = new (Winston.Logger)()
+var logger
 
 function TTSPlayer(config) {
-  logger.log('debug', 'TTS player')
   this._config = config
   this._akcDtid = config['akcDtid']['ttsPlayer']
 
   logger = ProxyHubLogger('TTSPLAYER', this._config)
-
+  logger.log('debug', 'TTS player')
+  
   EventEmitter.call(this)
 }
 

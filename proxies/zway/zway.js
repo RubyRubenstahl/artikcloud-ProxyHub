@@ -4,13 +4,12 @@ module.exports = Zway
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var Winston = require('winston')
 var Request = require('superagent')
 var DeepEqual = require('deep-equal')
 var Promise = require('promise')
 var ProxyHubLogger = require('../../lib/proxy-hub-logger')
 
-var logger = new Winston.Logger()
+var logger
 var errors = []
 
 var COMMAND_CLASS_2_DEVICE_TYPE = {

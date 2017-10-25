@@ -11,14 +11,13 @@ module.exports = Wemo
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
 var Promise = require('promise')
-var winston = require('winston')
 var Url = require('url')
 var Http = require('http')
 var Xml2js = require('xml2js')
 var SSDPClient = require('node-ssdp').Client
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
-var logger = new winston.Logger()
+var logger
 var errors = []
 
 function Wemo (config) {

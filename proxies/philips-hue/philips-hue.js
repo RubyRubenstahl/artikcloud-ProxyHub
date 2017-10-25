@@ -2,7 +2,6 @@ module.exports = PhilipsHue
 
 var EventEmitter = require('events').EventEmitter
 var Util = require('util')
-var Winston = require('winston')
 var proxyHubLogger = require('../../lib/proxy-hub-logger')
 var Fs = require('fs')
 var path = require('path');
@@ -11,7 +10,7 @@ var hue = require("node-hue-api")
 var md5 = require('js-md5');
 var os = require("os")
 
-var logger = new (Winston.Logger)()
+var logger
 var lightState = hue.lightState
 var HueApi = hue.HueApi
 var hueApi = new HueApi()

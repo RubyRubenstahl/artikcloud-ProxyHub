@@ -9,8 +9,5 @@
     ]
   },
   "scheduleUpdatePeriodMs": 30000,
-  "log": {
-    "level": "debug"
-  },
   "username": ""
 }

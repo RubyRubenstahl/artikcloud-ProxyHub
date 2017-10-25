@@ -8,7 +8,7 @@ var Exec = require('child_process').exec
 var ProxyHubLogger = require('../../lib/proxy-hub-logger.js')
 
 var errors = []
-var logger = null
+var logger
 function MediaPlayer(config) {
 
   this._config = config
