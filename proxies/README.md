@@ -14,16 +14,16 @@ The proxy is in charge of:
 
 ## Get started
 
- - If there is no the corresponding device types for this proxy in ARTIK Cloud yet, create a ARTIK Cloud device type and define the Manifests. Note its Device Type ID (DTID). Please be aware that one proxy can handle devices of multiple device types (e.g. wemo).
- - Duplicate the _template folder in artik-proxy-hub/proxies
+ - If there is no the corresponding device types for this proxy in ARTIK Cloud yet, create a ARTIK Cloud device type and define the Manifests. Note its Device Type ID (DTID). Please be aware that one proxy can handle devices of multiple device types if needed (for example, wemo).
+ - Duplicate the _template directory under the "proxies" directory.
  - Rename the folder to a meaningful name (folder name starting with an '_' will not be loaded)
  - Update package.json: 
-   -- Fill in "name" field with a meaningful name
-   -- Import the API libraries you use in JS file.
+   - Fill in "name" field with a meaningful name
+   - Import the API libraries you use in JS file.
  - Update template.js:
-   -- Rename it to a meaningful name
-   -- Rename Template class
-   -- Implement logics relevant to your proxy
+   - Rename it to a meaningful name
+   - Rename Template class
+   - Implement logics relevant to your proxy
  - Update config.json 
 
 The rest of the article discusses how to implement logics in the JavaScript file (the renamed template.js) and how to setup configuration in the config file. 
