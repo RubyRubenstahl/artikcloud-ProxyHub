@@ -1,6 +1,6 @@
 # ARTIK Cloud Proxy Hub
 
-The ARTIK Cloud Proxy Hub is an application that:
+The Proxy Hub is an application that:
  - Discovers your local physical devices,
  - Maps them to existing virtual devices on ARTIK cloud services or new virtual devices that it creates on ARTIK cloud services,
  - Hosts multiple proxy plugins, each of which sends messages/Actions between ARTIK cloud services and one physical device type.
