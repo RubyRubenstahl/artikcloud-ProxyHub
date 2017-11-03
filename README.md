@@ -1,15 +1,22 @@
 # ARTIK Cloud Proxy Hub
 
-The Proxy Hub is an application that:
- - Discovers your local physical devices,
- - Maps them to existing virtual devices on ARTIK cloud services or new virtual devices that it creates on ARTIK cloud services,
- - Hosts multiple proxy plugins, each of which sends messages/Actions between ARTIK cloud services and one physical device type.
+Using the Proxy Hub, you can connect devices that cannot directly communicate to ARTIK cloud services. See [this documentation article](https://developer.artik.cloud/documentation/proxy-hub.html) to learn the details.
 
 You can use the Proxy Hub repository in three ways:
 
-1. Use the Proxy Hub out of the box. After [setting up](#installation), follow the [Demo](#demo) section to add and play with your nearby devices. The `/proxies` directory includes supported devices, listed below. 
+1. Use the Proxy Hub out of the box. After setting up, follow the [Demo](#demo) section to add and play with your nearby devices. The `/proxies` directory includes supported devices, listed below. 
 2. Extend this Proxy Hub by developing a [new proxy plugin](#develop-a-new-proxy-plugin). The hub can then communicate to more types of devices (not limited to the devices listed in `/proxies`).
 3. Use the code as an example to create your own proxy plugins that can be distributed to your end users. 
+
+**We will add new proxy plugins to this repository. Please check back from time to time.**
+
+## Prerequisites & installation
+
+See [this documentation article](https://developer.artik.cloud/documentation/proxy-hub.html#use-the-hub) for setup instructions.
+
+## Demo
+
+There are two types of devices: **discoverable** and **on demand**. A physical device (e.g. Philips Hue) should be discoverable. A device which is a piece of software running on a local machine (e.g. <a href=“https://github.com/artikcloud/artikcloud-ProxyHub/tree/master/proxies/shell”>Shell Proxy</a> and <a href=“https://github.com/artikcloud/artikcloud-ProxyHub/tree/master/proxies/ttsplayer”>TTS Player</a>) is added manually.
 
 The following physical devices are discoverable by the Proxy Hub:
 
@@ -23,21 +30,6 @@ The following devices are available on demand:
 * Media Player
 * Shell
 * TTS Player
-
-**We will add new proxy plugins to this repository. Please check back from time to time.**
-
-## Prerequisites
-
-- [node](https://nodejs.org/en/download/)  (Version >= 4.5.0) 
-- [npm](https://www.npmjs.com/get-npm) (Version >= 2.15.9)
-
-## Installation
-
-See [this documentation article](https://developer.artik.cloud/documentation/proxy-hub.html#use-the-hub) for setup instructions.
-
-## Demo
-
-There are two types of devices: **discoverable** and **on demand**. A physical device (e.g. Philips Hue) should be discoverable. A device which is a piece of software running on a local machine (e.g. <a href=“https://github.com/artikcloud/artikcloud-ProxyHub/tree/master/proxies/shell”>Shell Proxy</a> and <a href=“https://github.com/artikcloud/artikcloud-ProxyHub/tree/master/proxies/ttsplayer”>TTS Player</a>) is added manually.
 
 In this demo, we will use the TTS Player. 
 
@@ -56,10 +48,6 @@ In this demo, we will use the TTS Player.
  6. Once you have added proxy plugins for your physical devices, you can log off from the hub in your browser. **You must keep the server running**. The devices will continue to communicate with ARTIK cloud services via their plugins on the hub. 
  
 ## Develop a new proxy plugin
-
-You can create and add new proxy plugins to the Proxy Hub. Using the hub, you can add physical devices that correspond to the virtual devices in ARTIK cloud services, and physical devices will be able to communicate to ARTIK cloud services via the plugins on the hub.
-
-To create a new proxy plugin, add its folder to the `/proxies` folder. Proxies with a folder starting with ‘_’ are not loaded. The `_template` folder contains an example of what you need to do to create a proxy.
 
 Refer to the instructions [in the documentation article](https://developer.artik.cloud/documentation/proxy-hub.html#develop-a-new-proxy-plugin) to learn more.
 
