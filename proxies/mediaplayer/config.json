@@ -6,7 +6,12 @@
       "mediaplayer": {
         "displayName": "Media player command",
         "value": "mplayer",
-        "description": "Shell command used to play media."
+        "description": "Shell command used to play media"
+      },
+      "stopcommand": {
+        "displayName": "Stop player command",
+        "value": "",
+        "description": "Optional - Shell command used to stop the player. If absent the device will do pkill <Media player command>"
       }
     },
     "akcDtNames": [

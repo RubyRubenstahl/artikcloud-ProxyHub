@@ -59,10 +59,18 @@ MediaPlayer.prototype.playAction = function (proxyDeviceInfo, actionParams) {
 }
 
 MediaPlayer.prototype.stopPlayerAction = function (proxyDeviceInfo, actionParams) {
-  var player = proxyDeviceInfo.userParametersPerDevice.mediaplayer.value
-  var command = "pkill " + player
-  this._exec(command, function (error, output) {
-  })
+  var stop = proxyDeviceInfo.userParametersPerDevice.stopcommand.value
+  if(stop != ''){
+    logger.debug(stop)
+    this._exec(stop, function (error, output) {
+    })    
+  } else {
+    var player = proxyDeviceInfo.userParametersPerDevice.mediaplayer.value
+    var command = "pkill " + player
+    logger.debug(command)
+    this._exec(command, function (error, output) {
+    })
+  }
 }
 
 MediaPlayer.prototype.getStatus = function () {
