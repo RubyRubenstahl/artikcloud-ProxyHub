@@ -1,6 +1,6 @@
 {
   "name": "artik-proxy-hub",
-  "version": "1.5.2-beta",
+  "version": "1.5.3-beta",
   "private": true,
   "main": "index.js",
   "scripts": {
